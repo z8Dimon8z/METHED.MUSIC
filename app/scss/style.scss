@@ -1,0 +1,26 @@
+@import 'reset';
+@import 'fonts';
+@import 'vars';
+@import 'global';
+@import 'libs';
+@import 'mixsin';
+
+.text{
+  font-family: 'Ruda-Black', sans-serif;
+  font-size: 25px;
+  width: 300px;
+  @include line-clamp(3);
+}
+
+.text-footer{
+  font-family: 'OpenSans-Light', sans-serif;
+  font-size: 30px;
+}
+
+
+
+@import 'media';
+
+
+
+

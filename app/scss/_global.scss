@@ -1,0 +1,28 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'SFUIDisplay-Regular', sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: $dark-500;
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex-grow: 1;
+}
+
+.container {
+  max-width: 1320px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+h1{
+  font-size: 20px;
+  font-family: 'SFUIDisplay-Bold', sans-serif;
+}

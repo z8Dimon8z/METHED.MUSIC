@@ -1,0 +1,11 @@
+$dark-500: #121212;
+$white: #ffffff;
+
+
+@include font-face(SFUIDisplay-Bold, SFUIDisplay-Bold, 700);
+
+@include font-face(SFUIDisplay-Semibold, SFUIDisplay-Semibold, 600);
+
+@include font-face(SFUIDisplay-Regular, SFUIDisplay-Regular, 400);
+
+@include font-face(SFUIDisplay-Light, SFUIDisplay-Light, 300);
