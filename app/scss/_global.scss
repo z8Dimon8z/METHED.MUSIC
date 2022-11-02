@@ -5,24 +5,26 @@ body {
 
 body {
   font-family: 'SFUIDisplay-Regular', sans-serif;
-  font-size: 14px;
-  line-height: 1.4;
-  color: $dark-500;
+  min-width: 320px;
+  min-height: 100vh;
+  font-size: 16px;
+  line-height: 1.2;
   background-color: $white;
   display: flex;
   flex-direction: column;
+  background-image: url('../images/bg.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-bottom: 172px;
 }
 
 .main {
   flex-grow: 1;
 }
 
-.container {
-  max-width: 1320px;
-  padding: 0 15px;
-  margin: 0 auto;
-}
-h1{
-  font-size: 20px;
-  font-family: 'SFUIDisplay-Bold', sans-serif;
+.visuali-hidden{
+  position: fixed;
+  transform: scale(0);
 }
