@@ -94,7 +94,11 @@ function build() { // финальная сборка проекта
     'app/css/style.min.css',
     'app/fonts/**/*',
     'app/js/main.min.js',
-    'app/**/*.html'
+    'app/**/*.html',
+    'app/audio/**/*',
+    'app/browserconfig.xml',
+    'app/favicon.ico',
+    'app/site.webmanifest'
   ], {base: 'app'})
     .pipe(dest('dist'))
 }
