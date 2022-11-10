@@ -24,7 +24,7 @@
     <div class="header__container">
       <img class="header__logo" src="images/logo.svg" alt="logo">
       <form class="header__search search">
-        <input class="search__input" type="search">
+        <input class="search__input" type="search" name="search">
         <button class="search__btn">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -45,132 +45,7 @@
     <section class="catalog">
       <h2 class="visuali-hidden">Список треков</h2>
       <div class="catalog__container">
-        <button class="catalog__item track" data-track="audio/The Weeknd - Save Your Tears.mp3">
-          <div class="track__img-wrap">
-            <img class="track__poster" src="images/poster/image-1.jpg" alt="image" width="180" height="180">
-          </div>
-          <div class="track__info">
-            <p class="track__title">Save your tears</p>
-            <p class="track__artitst">The weeknd</p>
-          </div>
-        </button>
-
-        <button class="catalog__item track" data-track="audio/Adele - Hello.mp3">
-          <div class="track__img-wrap">
-            <img class="track__poster" src="images/poster/image-2.jpg" alt="image" width="180" height="180">
-          </div>
-          <div class="track__info">
-            <p class="track__title">Save your tears</p>
-            <p class="track__artitst">The weeknd</p>
-          </div>
-        </button>
-
-        <button class="catalog__item track" data-track="audio/Adele - Someone Like You.mp3">
-          <div class="track__img-wrap">
-            <img class="track__poster" src="images/poster/image-3.jpg" alt="image" width="180" height="180">
-          </div>
-          <div class="track__info">
-            <p class="track__title">Save your tears</p>
-            <p class="track__artitst">The weeknd</p>
-          </div>
-        </button>
-
-        <button class="catalog__item track">
-          <div class="track__img-wrap">
-            <img class="track__poster" src="images/poster/image-4.jpg" alt="image" width="180" height="180">
-          </div>
-          <div class="track__info">
-            <p class="track__title">Save your tears</p>
-            <p class="track__artitst">The weeknd</p>
-          </div>
-        </button>
-
-        <button class="catalog__item track">
-          <div class="track__img-wrap">
-            <img class="track__poster" src="images/poster/image-5.jpg" alt="image" width="180" height="180">
-          </div>
-          <div class="track__info">
-            <p class="track__title">Save your tears</p>
-            <p class="track__artitst">The weeknd</p>
-          </div>
-        </button>
-
-        <button class="catalog__item track">
-          <div class="track__img-wrap">
-            <img class="track__poster" src="images/poster/image-6.jpg" alt="image" width="180" height="180">
-          </div>
-          <div class="track__info">
-            <p class="track__title">Save your tears</p>
-            <p class="track__artitst">The weeknd</p>
-          </div>
-        </button>
-
-        <button class="catalog__item track">
-          <div class="track__img-wrap">
-            <img class="track__poster" src="images/poster/image-7.jpg" alt="image" width="180" height="180">
-          </div>
-          <div class="track__info">
-            <p class="track__title">Save your tears</p>
-            <p class="track__artitst">The weeknd</p>
-          </div>
-        </button>
-
-        <button class="catalog__item track">
-          <div class="track__img-wrap">
-            <img class="track__poster" src="images/poster/image-8.jpg" alt="image" width="180" height="180">
-          </div>
-          <div class="track__info">
-            <p class="track__title">Save your tears</p>
-            <p class="track__artitst">The weeknd</p>
-          </div>
-        </button>
-
-        <button class="catalog__item track">
-          <div class="track__img-wrap">
-            <img class="track__poster" src="images/poster/image-9.jpg" alt="image" width="180" height="180">
-          </div>
-          <div class="track__info">
-            <p class="track__title">Save your tears</p>
-            <p class="track__artitst">The weeknd</p>
-          </div>
-        </button>
-
-        <button class="catalog__item track">
-          <div class="track__img-wrap">
-            <img class="track__poster" src="images/poster/image-10.jpg" alt="image" width="180" height="180">
-          </div>
-          <div class="track__info">
-            <p class="track__title">Save your tears</p>
-            <p class="track__artitst">The weeknd</p>
-          </div>
-        </button>
-
-        <button class="catalog__item track">
-          <div class="track__img-wrap">
-            <img class="track__poster" src="images/poster/image-11.jpg" alt="image" width="180" height="180">
-          </div>
-          <div class="track__info">
-            <p class="track__title">Save your tears</p>
-            <p class="track__artitst">The weeknd</p>
-          </div>
-        </button>
-
-        <button class="catalog__item track">
-          <div class="track__img-wrap">
-            <img class="track__poster" src="images/poster/image-12.jpg" alt="image" width="180" height="180">
-          </div>
-          <div class="track__info">
-            <p class="track__title">Save your tears</p>
-            <p class="track__artitst">The weeknd</p>
-          </div>
-        </button>
-
-        <button class="catalog__btn-add">
-          <span>Увидеть все</span>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">         
-              <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z"/>           
-          </svg>
-        </button>
+        
       </div>
     </section>
 
@@ -190,7 +65,7 @@
         </div>
         <div class="player__progress-wrap">
           <div class="player__progress">
-            <input class="player__progress-input" type="range" min="0" max="100" value="0">
+            <input class="player__progress-input" type="range" min="0" max="1000" value="0">
           </div>
           <p class="player__time">
             <span class="player__time-passed">0:24</span>
