@@ -1,4 +1,4 @@
-const API_URL =  'http://localhost:3024/';
+const API_URL = 'http://localhost:3024/';
 
 /* dataMusic для локального пользования для выгрузки на хостинг без API
 {
@@ -109,6 +109,11 @@ const playerVolumeInput = document.querySelector('.player__volume-input');
 const playerProgressInput = document.querySelector('.player__progress-input');
 const playerTimePassed = document.querySelector('.player__time-passed');
 const playerTimeTotal = document.querySelector('.player__time-total');
+const trackInfoTitle = document.querySelector('.track-info__title');
+const trackInfoArtitst = document.querySelector('.track-info__artitst');
+
+
+
 
 const search = document.querySelector('.search');
 
@@ -118,15 +123,15 @@ const catalogAddBtn = document.createElement('button');
 catalogAddBtn.classList.add('catalog__btn-add');
 catalogAddBtn.innerHTML = `
           <span>Увидеть все</span>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">         
-              <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z"/>           
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z"/>
           </svg>
 `;
 
 
 
 const pausePlayer = () => {
-  const trackActive = document.querySelector('.track_active')
+  const trackActive = document.querySelector('.track_active');
 
   if (audio.paused) {
     audio.play();
@@ -137,7 +142,7 @@ const pausePlayer = () => {
     pauseBtn.classList.add('player__icon_play');
     trackActive.classList.add('track_pause');
   }
-}
+};
 
 const playMusic = (event) => {
   event.preventDefault();
@@ -145,25 +150,27 @@ const playMusic = (event) => {
 
   if (trackActive.classList.contains('track_active')) {
     pausePlayer();
-    return
+    return;
   }
 
   let i = 0;
   const id = trackActive.dataset.idTrack;
 
   const index = favoriteList.indexOf(id);
-    if(index !== -1){
-      likeBtn.classList.add('player__icon_like_active');
-    } else {
-      likeBtn.classList.remove('player__icon_like_active');
-    }
+  if (index !== -1) {
+    likeBtn.classList.add('player__icon_like_active');
+  } else {
+    likeBtn.classList.remove('player__icon_like_active');
+  }
 
 
   const track = playlist.find((item, index) => {
     i = index;
-    return id === item.id
+    return id === item.id;
   });
   audio.src = `${API_URL}${track.mp3}`;
+  trackInfoTitle.textContent = track.track;
+  trackInfoArtitst.textContent = track.artist;
 
   audio.play();
   pauseBtn.classList.remove('player__icon_play');
@@ -177,21 +184,21 @@ const playMusic = (event) => {
   likeBtn.dataset.idTrack = id;
 
   for (let i = 0; i < tracksCard.length; i++) {
-    if(id === tracksCard[i].dataset.idTrack){
+    if (id === tracksCard[i].dataset.idTrack) {
       tracksCard[i].classList.add('track_active');
     } else {
       tracksCard[i].classList.remove('track_active');
     }
-   
+
   }
 
-}
+};
 
 const addHendlerTrack = () => {
   for (let i = 0; i < tracksCard.length; i++) {
-    tracksCard[i].addEventListener('click', playMusic)
+    tracksCard[i].addEventListener('click', playMusic);
   }
-}
+};
 
 
 pauseBtn.addEventListener('click', pausePlayer);
@@ -199,16 +206,16 @@ pauseBtn.addEventListener('click', pausePlayer);
 stopBtn.addEventListener('click', () => {
   audio.src = '';
   player.classList.remove('player_active');
-  document.querySelector('.track_active').classList.remove('track_active')
+  document.querySelector('.track_active').classList.remove('track_active');
 });
 
 const createCard = (data) => {
   const card = document.createElement('a');
   card.href = '#';
   card.className = 'catalog__item track';
-  if(player.dataset.idTrack === data.id){
+  if (player.dataset.idTrack === data.id) {
     card.classList.add('track_active');
-    if(audio.paused) {
+    if (audio.paused) {
       card.classList.add('track_pause');
     }
   }
@@ -216,7 +223,8 @@ const createCard = (data) => {
 
   card.innerHTML = `
           <div class="track__img-wrap">
-            <img class="track__poster" src="${API_URL}${data.poster}" alt="${data.artist} ${data.track}" width="180" height="180">
+            <img class="track__poster" src="${API_URL}${data.poster}" 
+            alt="${data.artist} ${data.track}" width="180" height="180">
           </div>
           <div class="track__info">
             <p class="track__title">${data.track}</p>
@@ -225,7 +233,7 @@ const createCard = (data) => {
   `;
 
   return card;
-}
+};
 
 const renderCatalog = (dataList) => {
   playlist = [...dataList];
@@ -236,13 +244,13 @@ const renderCatalog = (dataList) => {
 };
 
 const checkCount = (i = 1) => {
- if(catalogContainer.clientHeight > tracksCard[0].clientHeight * 3){
-  tracksCard[tracksCard.length - i].style.display = 'none';
-  checkCount(i + 1);
-  } else if(i !== 1) {
-      catalogContainer.append(catalogAddBtn);
+  if (catalogContainer.clientHeight > tracksCard[0].clientHeight * 3) {
+    tracksCard[tracksCard.length - i].style.display = 'none';
+    checkCount(i + 1);
+  } else if (i !== 1) {
+    catalogContainer.append(catalogAddBtn);
   }
-  
+
 };
 
 const updateTime = () => {
@@ -259,14 +267,14 @@ const updateTime = () => {
 
   playerTimePassed.textContent = `${minutesPassed}:${secondsPassed < 10 ? '0' + secondsPassed : secondsPassed}`;
   playerTimeTotal.textContent = `${minutesDuration}:${secondsDuration < 10 ? '0' + secondsDuration : secondsDuration}`;
-}
+};
 
 
 const init = async () => {
   audio.volume = localStorage.getItem('volume') || 1;
   playerVolumeInput.value = audio.volume * 100;
 
-  dataMusic = await fetch(`${API_URL}api/music`).then((data) => data.json())
+  dataMusic = await fetch(`${API_URL}api/music`).then((data) => data.json());
 
   renderCatalog(dataMusic);
   checkCount();
@@ -283,7 +291,9 @@ const init = async () => {
 
   audio.addEventListener('timeupdate', updateTime);
   audio.addEventListener('ended', () => {
-    nextBtn.dispatchEvent(new Event('click', {bubbles: true}));
+    nextBtn.dispatchEvent(new Event('click', {
+      bubbles: true
+    }));
   });
 
   playerProgressInput.addEventListener('input', () => {
@@ -292,26 +302,26 @@ const init = async () => {
   });
 
   favoriteBtn.addEventListener('click', () => {
-    const data = dataMusic.filter((item) => favoriteList.includes(item.id)); 
+    const data = dataMusic.filter((item) => favoriteList.includes(item.id));
     renderCatalog(data);
     checkCount();
   });
 
-  headerLogo.addEventListener('click', () => { 
+  headerLogo.addEventListener('click', () => {
     renderCatalog(dataMusic);
     checkCount();
   });
 
   likeBtn.addEventListener('click', () => {
     const index = favoriteList.indexOf(likeBtn.dataset.idTrack);
-    if(index === -1){
+    if (index === -1) {
       favoriteList.push(likeBtn.dataset.idTrack);
       likeBtn.classList.add('player__icon_like_active');
     } else {
       favoriteList.splice(index, 1);
       likeBtn.classList.remove('player__icon_like_active');
     }
-    
+
     localStorage.setItem('favorite', JSON.stringify(favoriteList));
 
   });
@@ -322,12 +332,12 @@ const init = async () => {
   });
 
   muteBtn.addEventListener('click', () => {
-    if(audio.volume) {
+    if (audio.volume) {
       localStorage.setItem('volume', audio.volume);
       audio.volume = 0;
       playerVolumeInput.value = 0;
       muteBtn.classList.add('player__icon_mute-off');
-    }else {
+    } else {
       audio.volume = localStorage.getItem('volume');
       muteBtn.classList.remove('player__icon_mute-off');
       playerVolumeInput.value = audio.volume * 100;
@@ -337,20 +347,11 @@ const init = async () => {
   search.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-  playlist = await fetch(`${API_URL}api/music?search=${search.search.value}`).then((data) => data.json())
+    playlist = await fetch(`${API_URL}api/music?search=${search.search.value}`).then((data) => data.json());
 
-  renderCatalog(playlist);
-  checkCount();
+    renderCatalog(playlist);
+    checkCount();
   });
 };
 
 init();
-
-/*
- <button class="catalog__btn-add">
-          <span>Увидеть все</span>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">         
-              <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z"/>           
-          </svg>
-        </button>
-        */
