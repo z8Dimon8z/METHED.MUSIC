@@ -155,6 +155,10 @@
     opacity: 1;
   }
 
+  &_pause .track__img-wrap::after {
+    background-image: url('../images/play.svg');
+  }
+
   &_active:hover .track__img-wrap::after {
     background-color: #fff;
   }
